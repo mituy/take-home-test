@@ -1,0 +1,27 @@
+<h1>top10 cryptocurrencies</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Currency Code</th>
+      <th>Currency Name</th>
+      <th>Market Cap</th>
+      <th>Value (in USD)</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cryptocurrencies.each.with_index(1) do |(k, v), i| %>
+      <tr>
+        <td><%= i %></td>
+        <td align="right"><%= k %></td>
+        <td><%= v['name'] %></td>
+        <td align="right"><%= number_to_currency(v['quotes']['USD']['market_cap'], precision: 0) %></td>
+        <td align="right"><%= number_to_currency(v['quotes']['USD']['price'], precision: 5) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Sign out', '/logout' %>
